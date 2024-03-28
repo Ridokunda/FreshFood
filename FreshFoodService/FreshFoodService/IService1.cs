@@ -20,6 +20,8 @@ namespace FreshFoodService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [OperationContract]
+        bool register(User user);
     }
 
 

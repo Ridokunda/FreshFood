@@ -1,0 +1,7 @@
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\bin\FreshFoodService.dll.config
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\bin\FreshFoodService.dll
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\bin\FreshFoodService.pdb
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\obj\Debug\FreshFoodService.csproj.AssemblyReference.cache
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\obj\Debug\FreshFoodService.csproj.CoreCompileInputs.cache
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\obj\Debug\FreshFoodService.dll
+C:\Users\ridok\Git_Repos\FreshFood\FreshFoodService\FreshFoodService\obj\Debug\FreshFoodService.pdb
