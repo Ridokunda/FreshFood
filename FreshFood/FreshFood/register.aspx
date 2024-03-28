@@ -31,13 +31,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-  <div class="regform" id="regform" >
+    <div class="regform" id="regform" >
       <h2>Register an Account</h2>
-      <input type="text" id="CName" placeholder="Name">
-      <input type="text" id="CSurname" placeholder="Surname">
-      <input type="email" id="Cemail" placeholder="Email">
-      <input type="password" id="Fpassword" placeholder="Enter Password">
-      <input type="password" id="Cpassword" placeholder="Confirm Password">
-      <asp:Button Text="Register" id="btnSubmit" runat="server" />
+      <input type="text" id="CName" placeholder="Name" runat="server">
+      <input type="text" id="CSurname" placeholder="Surname" runat="server">
+      <input type="email" id="Cemail" placeholder="Email" runat="server">
+      <input type="password" id="Fpassword" placeholder="Enter Password" runat="server">
+      <input type="password" id="Cpassword" placeholder="Confirm Password" runat="server">
+      <asp:Button Text="Register" id="btnSubmit" runat="server" OnClick="btnSubmit_Click" />
   </div>
 </asp:Content>
