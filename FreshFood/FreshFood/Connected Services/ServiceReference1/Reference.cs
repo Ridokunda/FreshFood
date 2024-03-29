@@ -167,6 +167,115 @@ namespace FreshFood.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Item", Namespace="http://schemas.datacontract.org/2004/07/FreshFoodService")]
+    [System.SerializableAttribute()]
+    public partial class Item : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Item_CatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Item_nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Item_priceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int item_qtyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Item_Cat {
+            get {
+                return this.Item_CatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Item_CatField, value) != true)) {
+                    this.Item_CatField = value;
+                    this.RaisePropertyChanged("Item_Cat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Item_name {
+            get {
+                return this.Item_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Item_nameField, value) != true)) {
+                    this.Item_nameField = value;
+                    this.RaisePropertyChanged("Item_name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Item_price {
+            get {
+                return this.Item_priceField;
+            }
+            set {
+                if ((this.Item_priceField.Equals(value) != true)) {
+                    this.Item_priceField = value;
+                    this.RaisePropertyChanged("Item_price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int item_qty {
+            get {
+                return this.item_qtyField;
+            }
+            set {
+                if ((this.item_qtyField.Equals(value) != true)) {
+                    this.item_qtyField = value;
+                    this.RaisePropertyChanged("item_qty");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -188,6 +297,12 @@ namespace FreshFood.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
         System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItems", ReplyAction="http://tempuri.org/IService1/getItemsResponse")]
+        FreshFood.ServiceReference1.Item[] getItems();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItems", ReplyAction="http://tempuri.org/IService1/getItemsResponse")]
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -239,6 +354,14 @@ namespace FreshFood.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user) {
             return base.Channel.registerAsync(user);
+        }
+        
+        public FreshFood.ServiceReference1.Item[] getItems() {
+            return base.Channel.getItems();
+        }
+        
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsAsync() {
+            return base.Channel.getItemsAsync();
         }
     }
 }
