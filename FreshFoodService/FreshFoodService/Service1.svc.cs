@@ -40,6 +40,29 @@ namespace FreshFoodService
             }
                         
         }
+
+        public List<Item> getItems()
+        {
+            dynamic aitems = (from i in db.Items
+                              select i).DefaultIfEmpty();
+            List<Item> list = new List<Item>();
+            if (aitems != null)
+            {
+                foreach (Item newItem in aitems)
+                {
+                    var nitems = new Item
+                    {
+                        Item_name = newItem.Item_name,
+                        Item_price = newItem.Item_price,
+                        Item_Cat = newItem.Item_Cat,
+                        item_qty = newItem.item_qty
+                    };
+                    list.Add(nitems);
+                }
+            }
+            return list;
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
