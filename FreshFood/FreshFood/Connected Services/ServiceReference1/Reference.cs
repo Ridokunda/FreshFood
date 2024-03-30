@@ -183,6 +183,9 @@ namespace FreshFood.ServiceReference1 {
         private string Item_CatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Item_imgField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Item_nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -223,6 +226,19 @@ namespace FreshFood.ServiceReference1 {
                 if ((object.ReferenceEquals(this.Item_CatField, value) != true)) {
                     this.Item_CatField = value;
                     this.RaisePropertyChanged("Item_Cat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Item_img {
+            get {
+                return this.Item_imgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Item_imgField, value) != true)) {
+                    this.Item_imgField = value;
+                    this.RaisePropertyChanged("Item_img");
                 }
             }
         }
@@ -303,6 +319,18 @@ namespace FreshFood.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItems", ReplyAction="http://tempuri.org/IService1/getItemsResponse")]
         System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addItem", ReplyAction="http://tempuri.org/IService1/addItemResponse")]
+        bool addItem(FreshFood.ServiceReference1.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addItem", ReplyAction="http://tempuri.org/IService1/addItemResponse")]
+        System.Threading.Tasks.Task<bool> addItemAsync(FreshFood.ServiceReference1.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
+        FreshFood.ServiceReference1.Item getItem(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -362,6 +390,22 @@ namespace FreshFood.ServiceReference1 {
         
         public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsAsync() {
             return base.Channel.getItemsAsync();
+        }
+        
+        public bool addItem(FreshFood.ServiceReference1.Item item) {
+            return base.Channel.addItem(item);
+        }
+        
+        public System.Threading.Tasks.Task<bool> addItemAsync(FreshFood.ServiceReference1.Item item) {
+            return base.Channel.addItemAsync(item);
+        }
+        
+        public FreshFood.ServiceReference1.Item getItem(int id) {
+            return base.Channel.getItem(id);
+        }
+        
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id) {
+            return base.Channel.getItemAsync(id);
         }
     }
 }

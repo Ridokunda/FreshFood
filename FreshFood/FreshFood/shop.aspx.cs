@@ -29,7 +29,7 @@ namespace FreshFood
             display += "<div class='box-img-hover'>";
             display += "<div class='type-lb'>";
             display += "<p class='sale'>Sale</p></div>";
-            display += "<img src='images/img-pro-01.jpg' class='img-fluid' alt='Image'>";
+            display += "<img src='"+item.Item_img+"' class='img-fluid' alt='Image'>";
             display += "<div class='mask-icon'>";
             display += "<ul><li><a href='#' data-toggle='tooltip' data-placement='right' title='View'><i class='fas fa-eye'></i></a></li>";
             display += "<li><a href='#' data-toggle='tooltip' data-placement='right' title='Compare'><i class='fas fa-sync-alt'></i></a></li>";
