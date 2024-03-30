@@ -30,12 +30,12 @@ namespace FreshFoodService
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUser(User instance);
-    partial void UpdateUser(User instance);
-    partial void DeleteUser(User instance);
     partial void InsertItem(Item instance);
     partial void UpdateItem(Item instance);
     partial void DeleteItem(Item instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -68,6 +68,14 @@ namespace FreshFoodService
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Item> Items
+		{
+			get
+			{
+				return this.GetTable<Item>();
+			}
+		}
+		
 		public System.Data.Linq.Table<User> Users
 		{
 			get
@@ -75,12 +83,186 @@ namespace FreshFoodService
 				return this.GetTable<User>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Item")]
+	public partial class Item : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<Item> Items
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Item_name;
+		
+		private decimal _Item_price;
+		
+		private int _item_qty;
+		
+		private string _Item_Cat;
+		
+		private string _Item_img;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnItem_nameChanging(string value);
+    partial void OnItem_nameChanged();
+    partial void OnItem_priceChanging(decimal value);
+    partial void OnItem_priceChanged();
+    partial void Onitem_qtyChanging(int value);
+    partial void Onitem_qtyChanged();
+    partial void OnItem_CatChanging(string value);
+    partial void OnItem_CatChanged();
+    partial void OnItem_imgChanging(string value);
+    partial void OnItem_imgChanged();
+    #endregion
+		
+		public Item()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<Item>();
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Item_name
+		{
+			get
+			{
+				return this._Item_name;
+			}
+			set
+			{
+				if ((this._Item_name != value))
+				{
+					this.OnItem_nameChanging(value);
+					this.SendPropertyChanging();
+					this._Item_name = value;
+					this.SendPropertyChanged("Item_name");
+					this.OnItem_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_price", DbType="Money NOT NULL")]
+		public decimal Item_price
+		{
+			get
+			{
+				return this._Item_price;
+			}
+			set
+			{
+				if ((this._Item_price != value))
+				{
+					this.OnItem_priceChanging(value);
+					this.SendPropertyChanging();
+					this._Item_price = value;
+					this.SendPropertyChanged("Item_price");
+					this.OnItem_priceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_qty", DbType="Int NOT NULL")]
+		public int item_qty
+		{
+			get
+			{
+				return this._item_qty;
+			}
+			set
+			{
+				if ((this._item_qty != value))
+				{
+					this.Onitem_qtyChanging(value);
+					this.SendPropertyChanging();
+					this._item_qty = value;
+					this.SendPropertyChanged("item_qty");
+					this.Onitem_qtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_Cat", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Item_Cat
+		{
+			get
+			{
+				return this._Item_Cat;
+			}
+			set
+			{
+				if ((this._Item_Cat != value))
+				{
+					this.OnItem_CatChanging(value);
+					this.SendPropertyChanging();
+					this._Item_Cat = value;
+					this.SendPropertyChanged("Item_Cat");
+					this.OnItem_CatChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_img", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Item_img
+		{
+			get
+			{
+				return this._Item_img;
+			}
+			set
+			{
+				if ((this._Item_img != value))
+				{
+					this.OnItem_imgChanging(value);
+					this.SendPropertyChanging();
+					this._Item_img = value;
+					this.SendPropertyChanged("Item_img");
+					this.OnItem_imgChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -194,164 +376,6 @@ namespace FreshFoodService
 					this._password = value;
 					this.SendPropertyChanged("password");
 					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Item")]
-	public partial class Item : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Item_name;
-		
-		private decimal _Item_price;
-		
-		private int _item_qty;
-		
-		private string _Item_Cat;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnItem_nameChanging(string value);
-    partial void OnItem_nameChanged();
-    partial void OnItem_priceChanging(decimal value);
-    partial void OnItem_priceChanged();
-    partial void Onitem_qtyChanging(int value);
-    partial void Onitem_qtyChanged();
-    partial void OnItem_CatChanging(string value);
-    partial void OnItem_CatChanged();
-    #endregion
-		
-		public Item()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string Item_name
-		{
-			get
-			{
-				return this._Item_name;
-			}
-			set
-			{
-				if ((this._Item_name != value))
-				{
-					this.OnItem_nameChanging(value);
-					this.SendPropertyChanging();
-					this._Item_name = value;
-					this.SendPropertyChanged("Item_name");
-					this.OnItem_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_price", DbType="Money NOT NULL")]
-		public decimal Item_price
-		{
-			get
-			{
-				return this._Item_price;
-			}
-			set
-			{
-				if ((this._Item_price != value))
-				{
-					this.OnItem_priceChanging(value);
-					this.SendPropertyChanging();
-					this._Item_price = value;
-					this.SendPropertyChanged("Item_price");
-					this.OnItem_priceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_item_qty", DbType="Int NOT NULL")]
-		public int item_qty
-		{
-			get
-			{
-				return this._item_qty;
-			}
-			set
-			{
-				if ((this._item_qty != value))
-				{
-					this.Onitem_qtyChanging(value);
-					this.SendPropertyChanging();
-					this._item_qty = value;
-					this.SendPropertyChanged("item_qty");
-					this.Onitem_qtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item_Cat", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Item_Cat
-		{
-			get
-			{
-				return this._Item_Cat;
-			}
-			set
-			{
-				if ((this._Item_Cat != value))
-				{
-					this.OnItem_CatChanging(value);
-					this.SendPropertyChanging();
-					this._Item_Cat = value;
-					this.SendPropertyChanged("Item_Cat");
-					this.OnItem_CatChanged();
 				}
 			}
 		}

@@ -42,6 +42,15 @@ namespace FreshFood
         protected global::System.Web.UI.HtmlControls.HtmlInputText item_cat;
 
         /// <summary>
+        /// item_qty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl item_qty;
+
+        /// <summary>
         /// item_img control.
         /// </summary>
         /// <remarks>
@@ -49,5 +58,14 @@ namespace FreshFood
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText item_img;
+
+        /// <summary>
+        /// btnAdditem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdditem;
     }
 }

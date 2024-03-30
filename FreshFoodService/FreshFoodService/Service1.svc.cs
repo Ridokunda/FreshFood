@@ -55,7 +55,8 @@ namespace FreshFoodService
                         Item_name = newItem.Item_name,
                         Item_price = newItem.Item_price,
                         Item_Cat = newItem.Item_Cat,
-                        item_qty = newItem.item_qty
+                        item_qty = newItem.item_qty,
+                        Item_img = newItem.Item_img,
                     };
                     list.Add(nitems);
                 }

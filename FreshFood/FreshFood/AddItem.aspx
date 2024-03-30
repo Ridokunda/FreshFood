@@ -24,7 +24,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <div class="add-item-form">
+    <div class="add-item-form">
        <h2>Add Item</h2>
        <input type="text" id="item_name" runat="server" placeholder="Item name" >
        <input type="number" id="item_price" runat="server" placeholder="Item Price" >
@@ -34,7 +34,8 @@
            <option value="Vegetable"/>
            <option value="Meat" />
        </datalist>
+       <input type="number" id="item_qty"  runat="server" placeholder="Item Quantity">
        <input type="text" id="item_img" runat="server" placeholder="Image name" >
-       <asp:Button Text="Add Item" runat="server" />
+       <asp:Button id="btnAdditem" Text="Add Item" runat="server" OnClick="btnAdditem_Click"  />
    </div>
 </asp:Content>
