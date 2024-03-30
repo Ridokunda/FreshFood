@@ -24,6 +24,9 @@ namespace FreshFoodService
         bool register(User user);
         [OperationContract]
         List<Item> getItems();
+
+        [OperationContract]
+        bool addItem(Item item);
     }
 
 

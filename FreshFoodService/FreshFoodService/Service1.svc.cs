@@ -63,6 +63,31 @@ namespace FreshFoodService
             return list;
         }
 
+        public bool addItem(Item item)
+        {
+            var test = (from i in db.Items
+                        where i.Id.Equals(item.Id)
+                        select i).FirstOrDefault();
+            if(test == null)
+            {
+                db.Items.InsertOnSubmit(item);
+                try
+                {
+                    db.SubmitChanges();
+                    return true;
+                }
+                catch(Exception ex)
+                {
+                    ex.GetBaseException();
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
