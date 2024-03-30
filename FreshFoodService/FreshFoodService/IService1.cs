@@ -27,6 +27,9 @@ namespace FreshFoodService
 
         [OperationContract]
         bool addItem(Item item);
+
+        [OperationContract]
+        Item getItem(int id);
     }
 
 

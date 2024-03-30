@@ -88,6 +88,29 @@ namespace FreshFoodService
             }
         }
 
+        public Item getItem(int id)
+        {
+            var item = (from i in db.Items
+                        where i.Id.Equals(id)
+                        select i).FirstOrDefault();
+            if(item != null)
+            {
+                var return_item = new Item
+                {
+                    Id = item.Id,
+                    Item_name = item.Item_name,
+                    Item_price = item.Item_price,
+                    Item_Cat = item.Item_Cat,
+                    item_qty = item.item_qty
+                };
+                return return_item;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
