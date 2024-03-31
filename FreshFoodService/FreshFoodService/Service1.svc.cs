@@ -94,7 +94,7 @@ namespace FreshFoodService
             var item = (from i in db.Items
                         where i.Id.Equals(id)
                         select i).FirstOrDefault();
-            if(item != null)
+            /*if(item != null)
             {
                 var return_item = new Item
                 {
@@ -109,7 +109,8 @@ namespace FreshFoodService
             else
             {
                 return null;
-            }
+            }*/
+            return item;
         }
 
         public string GetData(int value)
