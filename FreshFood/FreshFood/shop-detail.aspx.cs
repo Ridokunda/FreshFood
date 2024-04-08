@@ -13,9 +13,9 @@ namespace FreshFood
         Service1Client sc = new Service1Client();
         protected void Page_Load(object sender, EventArgs e)
         {
-            int item_id = int.Parse(Request.QueryString["ID"]);
+            string item_name = Request.QueryString["ID"];
            
-            Item item = sc.getItem(item_id);
+            Item item = sc.getItem(item_name);
             if (item != null)
             {
                 String Display = "";
@@ -24,8 +24,8 @@ namespace FreshFood
                 Display += "<div id='carousel-example-1' class='single-product-slider carousel slide' data-ride='carousel'>";
                 Display += "<img class='d-block w-100' src='images/big-img-02.jpg' alt='Item Image' runat='server'></div></div>";
                 Display += "<div class='col-xl-7 col-lg-7 col-md-6'><div class='single-product-details'>";
-                Display += "<h2>" + item.Item_name + "</h2><h5> <del>$ 60.00</del> $40.79</h5>";
-                Display += "<p class='available-stock'><span> More than 20 available / <a href='#'>8 sold </a></span></p>";
+                Display += "<h2>" + item.Item_name + "</h2><h5>R"+ string.Format("{0:0.00}", item.Item_price) + "</h5>";
+                Display += "<p class='available-stock'><span> "+item.item_qty+" is available / <a href='#'>8 sold </a></span></p>";
                 Display += "<h4>Short Description:</h4><p>Nam se accumsan. Ut semper in quamrcu. </p>";
                 Display += "<ul><li><div class='form-group quantity-box'>";
                 Display += "<label class='control-label'>Quantity</label><input class='form-control' value='0' min='0' max='20' type='number'>";

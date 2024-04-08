@@ -41,6 +41,7 @@ namespace FreshFoodService
                         
         }
 
+
         public List<Item> getItems()
         {
             dynamic aitems = (from i in db.Items
@@ -67,7 +68,7 @@ namespace FreshFoodService
         public bool addItem(Item item)
         {
             var test = (from i in db.Items
-                        where i.Id.Equals(item.Id)
+                        where i.Item_ID.Equals(item.Item_ID)
                         select i).FirstOrDefault();
             if(test == null)
             {
@@ -89,16 +90,16 @@ namespace FreshFoodService
             }
         }
 
-        public Item getItem(int id)
+        public Item getItem(string name)
         {
             var item = (from i in db.Items
-                        where i.Id.Equals(id)
+                        where i.Item_name.Equals(name)
                         select i).FirstOrDefault();
-            /*if(item != null)
+            if(item != null)
             {
                 var return_item = new Item
                 {
-                    Id = item.Id,
+                    Item_ID = item.Item_ID,
                     Item_name = item.Item_name,
                     Item_price = item.Item_price,
                     Item_Cat = item.Item_Cat,
@@ -109,8 +110,13 @@ namespace FreshFoodService
             else
             {
                 return null;
-            }*/
-            return item;
+            }
+            
+        }
+
+        public int getItemId(Item item)
+        {
+            return item.Item_ID;
         }
 
         public string GetData(int value)

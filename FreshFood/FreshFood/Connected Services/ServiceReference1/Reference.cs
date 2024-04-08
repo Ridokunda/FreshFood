@@ -177,10 +177,13 @@ namespace FreshFood.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
+        private System.Nullable<int> IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Item_CatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Item_IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Item_imgField;
@@ -205,14 +208,14 @@ namespace FreshFood.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
+        public System.Nullable<int> ID {
             get {
-                return this.IdField;
+                return this.IDField;
             }
             set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
                 }
             }
         }
@@ -226,6 +229,19 @@ namespace FreshFood.ServiceReference1 {
                 if ((object.ReferenceEquals(this.Item_CatField, value) != true)) {
                     this.Item_CatField = value;
                     this.RaisePropertyChanged("Item_Cat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Item_ID {
+            get {
+                return this.Item_IDField;
+            }
+            set {
+                if ((this.Item_IDField.Equals(value) != true)) {
+                    this.Item_IDField = value;
+                    this.RaisePropertyChanged("Item_ID");
                 }
             }
         }
@@ -327,10 +343,16 @@ namespace FreshFood.ServiceReference1 {
         System.Threading.Tasks.Task<bool> addItemAsync(FreshFood.ServiceReference1.Item item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
-        FreshFood.ServiceReference1.Item getItem(int id);
+        FreshFood.ServiceReference1.Item getItem(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
-        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id);
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemId", ReplyAction="http://tempuri.org/IService1/getItemIdResponse")]
+        int getItemId(FreshFood.ServiceReference1.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemId", ReplyAction="http://tempuri.org/IService1/getItemIdResponse")]
+        System.Threading.Tasks.Task<int> getItemIdAsync(FreshFood.ServiceReference1.Item item);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -400,12 +422,20 @@ namespace FreshFood.ServiceReference1 {
             return base.Channel.addItemAsync(item);
         }
         
-        public FreshFood.ServiceReference1.Item getItem(int id) {
-            return base.Channel.getItem(id);
+        public FreshFood.ServiceReference1.Item getItem(string name) {
+            return base.Channel.getItem(name);
         }
         
-        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id) {
-            return base.Channel.getItemAsync(id);
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(string name) {
+            return base.Channel.getItemAsync(name);
+        }
+        
+        public int getItemId(FreshFood.ServiceReference1.Item item) {
+            return base.Channel.getItemId(item);
+        }
+        
+        public System.Threading.Tasks.Task<int> getItemIdAsync(FreshFood.ServiceReference1.Item item) {
+            return base.Channel.getItemIdAsync(item);
         }
     }
 }

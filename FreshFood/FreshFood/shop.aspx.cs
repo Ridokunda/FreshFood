@@ -32,7 +32,7 @@ namespace FreshFood
             display += "<p class='sale'>Sale</p></div>";
             display += "<img src='"+item.Item_img+"' class='img-fluid' alt='Image'>";
             display += "<div class='mask-icon'>";
-            display += "<ul><li><a href='shop-detail.aspx?ID="+item.Id+"' data-toggle='tooltip' data-placement='right' title='View'><i class='fas fa-eye'></i></a></li>";
+            display += "<ul><li><a href='shop-detail.aspx?ID="+item.Item_name+"' data-toggle='tooltip' data-placement='right' title='View'><i class='fas fa-eye'></i></a></li>";
             display += "<li><a href='#' data-toggle='tooltip' data-placement='right' title='Compare'><i class='fas fa-sync-alt'></i></a></li>";
             display += "<li><a href='#' data-toggle='tooltip' data-placement='right' title='Add to Wishlist'><i class='far fa-heart'></i></a></li></ul>";
             display += "<a class='cart' href='#'>Add to Cart</a>";
