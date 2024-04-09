@@ -343,10 +343,10 @@ namespace FreshFood.ServiceReference1 {
         System.Threading.Tasks.Task<bool> addItemAsync(FreshFood.ServiceReference1.Item item);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
-        FreshFood.ServiceReference1.Item getItem(string name);
+        FreshFood.ServiceReference1.Item getItem(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItem", ReplyAction="http://tempuri.org/IService1/getItemResponse")]
-        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(string name);
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemId", ReplyAction="http://tempuri.org/IService1/getItemIdResponse")]
         int getItemId(FreshFood.ServiceReference1.Item item);
@@ -422,12 +422,12 @@ namespace FreshFood.ServiceReference1 {
             return base.Channel.addItemAsync(item);
         }
         
-        public FreshFood.ServiceReference1.Item getItem(string name) {
-            return base.Channel.getItem(name);
+        public FreshFood.ServiceReference1.Item getItem(int id) {
+            return base.Channel.getItem(id);
         }
         
-        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(string name) {
-            return base.Channel.getItemAsync(name);
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item> getItemAsync(int id) {
+            return base.Channel.getItemAsync(id);
         }
         
         public int getItemId(FreshFood.ServiceReference1.Item item) {

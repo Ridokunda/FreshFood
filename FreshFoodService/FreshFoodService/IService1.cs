@@ -29,7 +29,7 @@ namespace FreshFoodService
         bool addItem(Item item);
 
         [OperationContract]
-        Item getItem(string name);
+        Item getItem(int id);
 
         [OperationContract]
         int getItemId(Item item);

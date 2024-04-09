@@ -13,9 +13,9 @@ namespace FreshFood
         Service1Client sc = new Service1Client();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string item_name = Request.QueryString["ID"];
+            int item_id = int.Parse(Request.QueryString["ID"]);
            
-            Item item = sc.getItem(item_name);
+            Item item = sc.getItem(item_id);
             if (item != null)
             {
                 String Display = "";

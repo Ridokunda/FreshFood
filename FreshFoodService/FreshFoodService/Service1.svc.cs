@@ -53,6 +53,7 @@ namespace FreshFoodService
                 {
                     var nitems = new Item
                     {
+                        Item_ID = newItem.Item_ID,
                         Item_name = newItem.Item_name,
                         Item_price = newItem.Item_price,
                         Item_Cat = newItem.Item_Cat,
@@ -90,10 +91,10 @@ namespace FreshFoodService
             }
         }
 
-        public Item getItem(string name)
+        public Item getItem(int id)
         {
             var item = (from i in db.Items
-                        where i.Item_name.Equals(name)
+                        where i.Item_ID.Equals(id)
                         select i).FirstOrDefault();
             if(item != null)
             {
