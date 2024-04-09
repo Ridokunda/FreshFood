@@ -41,6 +41,29 @@ namespace FreshFoodService
                         
         }
 
+        public User Login(string email, string password)
+        {
+            var loguser = (from u in db.Users
+                           where u.email.Equals(email) && u.password.Equals(password)
+                           select u).FirstOrDefault();
+            if(loguser != null)
+            {
+                var newuser = new User
+                {
+                    Id = loguser.Id,
+                    email = loguser.email,
+                    password = loguser.password,
+
+                };
+                return newuser;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
 
         public List<Item> getItems()
         {

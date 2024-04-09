@@ -45,6 +45,21 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="Login">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoginResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="LoginResult" nillable="true" type="q4:User" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getItems">
         <xs:complexType>
           <xs:sequence />
@@ -53,14 +68,14 @@
       <xs:element name="getItemsResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemsResult" nillable="true" type="q4:ArrayOfItem" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemsResult" nillable="true" type="q5:ArrayOfItem" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="addItem">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q5:Item" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q6:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -81,14 +96,14 @@
       <xs:element name="getItemResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemResult" nillable="true" type="q6:Item" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemResult" nillable="true" type="q7:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="getItemId">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q7:Item" />
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q8:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -196,6 +211,12 @@
   <wsdl:message name="IService1_register_OutputMessage">
     <wsdl:part name="parameters" element="tns:registerResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_getItems_InputMessage">
     <wsdl:part name="parameters" element="tns:getItems" />
   </wsdl:message>
@@ -232,6 +253,10 @@
     <wsdl:operation name="register">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/register" message="tns:IService1_register_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/registerResponse" message="tns:IService1_register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Login" message="tns:IService1_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LoginResponse" message="tns:IService1_Login_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="getItems">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getItems" message="tns:IService1_getItems_InputMessage" />
@@ -272,6 +297,15 @@
     </wsdl:operation>
     <wsdl:operation name="register">
       <soap:operation soapAction="http://tempuri.org/IService1/register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IService1/Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -330,6 +330,12 @@ namespace FreshFood.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
         System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
+        FreshFood.ServiceReference1.User Login(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.User> LoginAsync(string email, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItems", ReplyAction="http://tempuri.org/IService1/getItemsResponse")]
         FreshFood.ServiceReference1.Item[] getItems();
         
@@ -404,6 +410,14 @@ namespace FreshFood.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user) {
             return base.Channel.registerAsync(user);
+        }
+        
+        public FreshFood.ServiceReference1.User Login(string email, string password) {
+            return base.Channel.Login(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.User> LoginAsync(string email, string password) {
+            return base.Channel.LoginAsync(email, password);
         }
         
         public FreshFood.ServiceReference1.Item[] getItems() {

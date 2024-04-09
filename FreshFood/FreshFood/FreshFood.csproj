@@ -80,6 +80,9 @@
     <Content Include="Connected Services\ServiceReference1\FreshFood.ServiceReference1.Item.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServiceReference1\FreshFood.ServiceReference1.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -176,6 +179,7 @@
     <Content Include="js\jquery.superslides.min.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\popper.min.js" />
+    <Content Include="login.aspx" />
     <Content Include="ManageProducts.aspx" />
     <Content Include="my-account.aspx" />
     <Content Include="php\form-process.php" />
@@ -236,6 +240,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="ManageProducts.aspx.cs">
       <DependentUpon>ManageProducts.aspx</DependentUpon>

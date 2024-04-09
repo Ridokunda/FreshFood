@@ -22,6 +22,10 @@ namespace FreshFoodService
         // TODO: Add your service operations here
         [OperationContract]
         bool register(User user);
+
+        [OperationContract]
+        User Login(string email, string password);
+
         [OperationContract]
         List<Item> getItems();
 
