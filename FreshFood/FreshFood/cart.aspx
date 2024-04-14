@@ -35,8 +35,8 @@
                                     <th>Remove</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
+                            <tbody id="tbody" runat="server">
+                                <%--<tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
 									<img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
@@ -59,8 +59,8 @@
 									<i class="fas fa-times"></i>
 								</a>
                                     </td>
-                                </tr>
-                                <tr>
+                                </tr>--%>
+                                <%--<tr>
                                     <td class="thumbnail-img">
                                         <a href="#">
 									<img class="img-fluid" src="images/img-pro-02.jpg" alt="" />
@@ -107,7 +107,7 @@
 									<i class="fas fa-times"></i>
 								</a>
                                     </td>
-                                </tr>
+                                </tr>--%>
                             </tbody>
                         </table>
                     </div>
