@@ -6,6 +6,7 @@
       <Column Name="name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Association Name="User_onCart" Member="onCarts" ThisKey="Id" OtherKey="CustomerID" Type="onCart" />
     </Type>
   </Table>
   <Table Name="dbo.Item" Member="Items">
@@ -17,6 +18,17 @@
       <Column Name="Item_Cat" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Item_img" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Item_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="Item_onCart" Member="onCarts" ThisKey="Item_ID" OtherKey="Item_ID" Type="onCart" />
+    </Type>
+  </Table>
+  <Table Name="dbo.onCart" Member="onCarts">
+    <Type Name="onCart">
+      <Column Name="OnCart_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Item_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OnCart_qty" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Item_onCart" Member="Item" ThisKey="Item_ID" OtherKey="Item_ID" Type="Item" IsForeignKey="true" />
+      <Association Name="User_onCart" Member="User" ThisKey="CustomerID" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

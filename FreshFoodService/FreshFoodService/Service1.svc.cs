@@ -143,6 +143,36 @@ namespace FreshFoodService
             return item.Item_ID;
         }
 
+        public bool addItemonCart(int C_ID, int I_ID,int qty)
+        {
+            var item = (from i in db.Items
+                        where i.Item_ID.Equals(I_ID)
+                        select i).FirstOrDefault();
+            var cus = (from c in db.Users
+                       where c.Id.Equals(C_ID)
+                       select c).FirstOrDefault();
+            if (item != null && cus != null)
+            {
+                var add = new onCart
+                {
+                    CustomerID = cus.Id,
+                    Item_ID = item.Item_ID,
+                    OnCart_qty = qty
+                };
+                db.onCarts.InsertOnSubmit(add);
+                try
+                {
+                    db.SubmitChanges();
+                    return true;
+                }catch(Exception ex)
+                {
+                    ex.GetBaseException();
+                    return false;
+                }
+            }
+            return false;
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);

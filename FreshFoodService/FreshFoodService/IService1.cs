@@ -37,6 +37,9 @@ namespace FreshFoodService
 
         [OperationContract]
         int getItemId(Item item);
+
+        [OperationContract]
+        bool addItemonCart(int C_ID,int I_ID, int qty);
     }
 
 
