@@ -64,6 +64,27 @@ namespace FreshFoodService
             
         }
 
+        public User GetUser(int id)
+        {
+            var user = (from u in db.Users
+                        where u.Id.Equals(id)
+                        select u).FirstOrDefault();
+
+            if (user != null)
+            {
+                var reuser = new User()
+                {
+                    Id = user.Id,
+                    name = user.name,
+                    email = user.email,
+                    password = user.password,
+                    onCarts = user.onCarts
+                };
+                return reuser;
+
+            }
+            return null;
+        }
 
         public List<Item> getItems()
         {
@@ -171,6 +192,32 @@ namespace FreshFoodService
                 }
             }
             return false;
+        }
+        //Function to get items on cart of the user provided
+        public List<Item> getItemsOnCart(User user)
+        {
+            dynamic items = (from i in db.onCarts
+                             where i.User.Id.Equals(user.Id)
+                             select i).DefaultIfEmpty();
+            List<Item> list = new List<Item>();
+            if (items != null)
+            {
+                foreach(Item item in items)
+                {
+                    var additem = new Item
+                    {
+                        Item_ID = item.Item_ID,
+                        Item_name = item.Item_name,
+                        Item_Cat = item.Item_Cat,
+                        Item_price = item.Item_price,
+                        Item_img = item.Item_img,
+                        item_qty = item.item_qty
+                    };
+                    list.Add(additem);
+                }
+                
+            }
+            return list;
         }
 
         public string GetData(int value)

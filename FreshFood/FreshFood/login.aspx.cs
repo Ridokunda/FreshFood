@@ -21,6 +21,7 @@ namespace FreshFood
             User loguser = sc.Login(email.Value, password.Value);
             if (loguser != null)
             {
+                Session["CustomerID"] = loguser.Id;
                 Response.Redirect("index.aspx");
             }
             else
