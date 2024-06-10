@@ -57,8 +57,9 @@
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row" runat="server" id="Display" >
                                           
-                                        </div>
+                                        
                                     </div>
+                                   
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
                                     <div class="list-view-box">
