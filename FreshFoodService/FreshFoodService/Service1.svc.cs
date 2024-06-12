@@ -194,26 +194,35 @@ namespace FreshFoodService
             return false;
         }
         //Function to get items on cart of the user provided
-        public List<Item> getItemsOnCart(User user)
+        public List<Item> getItemsOnCart(int userid)
         {
-            dynamic items = (from i in db.onCarts
-                             where i.User.Id.Equals(user.Id)
-                             select i).DefaultIfEmpty();
+            List<int> itemids = (from i in db.onCarts
+                             where i.CustomerID.Equals(userid)
+                             select i.Item_ID).ToList();
+
             List<Item> list = new List<Item>();
-            if (items != null)
+
+            if (itemids != null)
             {
-                foreach(Item item in items)
+                foreach(int itemid in itemids)
                 {
-                    var additem = new Item
+                    var itm = (from i in db.Items
+                               where i.Item_ID.Equals(itemid)
+                               select i).FirstOrDefault();
+                    if (itm != null)
                     {
-                        Item_ID = item.Item_ID,
-                        Item_name = item.Item_name,
-                        Item_Cat = item.Item_Cat,
-                        Item_price = item.Item_price,
-                        Item_img = item.Item_img,
-                        item_qty = item.item_qty
-                    };
-                    list.Add(additem);
+                        var additem = new Item
+                        {
+                            Item_ID = itm.Item_ID,
+                            Item_name = itm.Item_name,
+                            Item_Cat = itm.Item_Cat,
+                            Item_price = itm.Item_price,
+                            Item_img = itm.Item_img,
+                            item_qty = itm.item_qty
+                        };
+                        list.Add(additem);
+                    }
+                    
                 }
                 
             }

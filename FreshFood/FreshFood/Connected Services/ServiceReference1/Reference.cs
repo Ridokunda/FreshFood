@@ -530,10 +530,10 @@ namespace FreshFood.ServiceReference1 {
         System.Threading.Tasks.Task<FreshFood.ServiceReference1.User> GetUserAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemsOnCart", ReplyAction="http://tempuri.org/IService1/getItemsOnCartResponse")]
-        FreshFood.ServiceReference1.Item[] getItemsOnCart(FreshFood.ServiceReference1.User user);
+        FreshFood.ServiceReference1.Item[] getItemsOnCart(int userid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemsOnCart", ReplyAction="http://tempuri.org/IService1/getItemsOnCartResponse")]
-        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsOnCartAsync(FreshFood.ServiceReference1.User user);
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsOnCartAsync(int userid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -643,12 +643,12 @@ namespace FreshFood.ServiceReference1 {
             return base.Channel.GetUserAsync(id);
         }
         
-        public FreshFood.ServiceReference1.Item[] getItemsOnCart(FreshFood.ServiceReference1.User user) {
-            return base.Channel.getItemsOnCart(user);
+        public FreshFood.ServiceReference1.Item[] getItemsOnCart(int userid) {
+            return base.Channel.getItemsOnCart(userid);
         }
         
-        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsOnCartAsync(FreshFood.ServiceReference1.User user) {
-            return base.Channel.getItemsOnCartAsync(user);
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.Item[]> getItemsOnCartAsync(int userid) {
+            return base.Channel.getItemsOnCartAsync(userid);
         }
     }
 }
