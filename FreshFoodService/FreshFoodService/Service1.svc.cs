@@ -148,7 +148,9 @@ namespace FreshFoodService
                     Item_name = item.Item_name,
                     Item_price = item.Item_price,
                     Item_Cat = item.Item_Cat,
-                    item_qty = item.item_qty
+                    item_qty = item.item_qty,
+                    Item_img = item.Item_img,
+                    
                 };
                 return return_item;
             }
@@ -194,35 +196,25 @@ namespace FreshFoodService
             return false;
         }
         //Function to get items on cart of the user provided
-        public List<Item> getItemsOnCart(int userid)
+        public List<onCart> getOnCartItems(int userid)
         {
-            List<int> itemids = (from i in db.onCarts
+            dynamic onCart = (from i in db.onCarts
                              where i.CustomerID.Equals(userid)
-                             select i.Item_ID).ToList();
+                             select i);
 
-            List<Item> list = new List<Item>();
+            List<onCart> list = new List<onCart>();
 
-            if (itemids != null)
+            if (onCart != null)
             {
-                foreach(int itemid in itemids)
+                foreach(onCart itm in onCart)
                 {
-                    var itm = (from i in db.Items
-                               where i.Item_ID.Equals(itemid)
-                               select i).FirstOrDefault();
-                    if (itm != null)
+                    var onCartnew = new onCart
                     {
-                        var additem = new Item
-                        {
-                            Item_ID = itm.Item_ID,
-                            Item_name = itm.Item_name,
-                            Item_Cat = itm.Item_Cat,
-                            Item_price = itm.Item_price,
-                            Item_img = itm.Item_img,
-                            item_qty = itm.item_qty
-                        };
-                        list.Add(additem);
-                    }
-                    
+                        Item_ID = itm.Item_ID,
+                        CustomerID = itm.CustomerID,
+                        OnCart_qty = itm.OnCart_qty,
+                    };
+                    list.Add(onCartnew);
                 }
                 
             }

@@ -144,17 +144,17 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="getItemsOnCart">
+      <xs:element name="getOnCartItems">
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="userid" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="getItemsOnCartResponse">
+      <xs:element name="getOnCartItemsResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemsOnCartResult" nillable="true" type="q10:ArrayOfItem" />
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getOnCartItemsResult" nillable="true" type="q10:ArrayOfonCart" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -316,11 +316,11 @@
   <wsdl:message name="IService1_GetUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_getItemsOnCart_InputMessage">
-    <wsdl:part name="parameters" element="tns:getItemsOnCart" />
+  <wsdl:message name="IService1_getOnCartItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOnCartItems" />
   </wsdl:message>
-  <wsdl:message name="IService1_getItemsOnCart_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getItemsOnCartResponse" />
+  <wsdl:message name="IService1_getOnCartItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOnCartItemsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
@@ -363,9 +363,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUser" message="tns:IService1_GetUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUserResponse" message="tns:IService1_GetUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getItemsOnCart">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getItemsOnCart" message="tns:IService1_getItemsOnCart_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getItemsOnCartResponse" message="tns:IService1_getItemsOnCart_OutputMessage" />
+    <wsdl:operation name="getOnCartItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getOnCartItems" message="tns:IService1_getOnCartItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getOnCartItemsResponse" message="tns:IService1_getOnCartItems_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -460,8 +460,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getItemsOnCart">
-      <soap:operation soapAction="http://tempuri.org/IService1/getItemsOnCart" style="document" />
+    <wsdl:operation name="getOnCartItems">
+      <soap:operation soapAction="http://tempuri.org/IService1/getOnCartItems" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

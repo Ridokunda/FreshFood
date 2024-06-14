@@ -43,7 +43,7 @@ namespace FreshFoodService
         [OperationContract]
         User GetUser(int id);
         [OperationContract]
-        List<Item> getItemsOnCart(int userid);
+        List<onCart> getOnCartItems(int userid);
     }
 
 
