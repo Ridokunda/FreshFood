@@ -221,6 +221,27 @@ namespace FreshFoodService
             return list;
         }
 
+        public bool removeItemOnCart(int userid, int itemid)
+        {
+            var item = (from i in db.onCarts
+                        where i.CustomerID == userid && i.Item_ID == itemid
+                        select i).FirstOrDefault();
+            if (item != null)
+            {
+                db.onCarts.DeleteOnSubmit(item);
+                try
+                {
+                    db.SubmitChanges();
+                    return true;
+                }catch(Exception ex)
+                {
+                    ex.GetBaseException();
+                    return false;
+                }
+            }
+            return false;
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);

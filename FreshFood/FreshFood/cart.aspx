@@ -127,7 +127,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <div class="update-box">
-                        <asp:Button Text="Update Cart" runat="server" />
+                        <asp:Button Text="Update Cart" runat="server" OnClick="Update_Cart_Click" />
                     </div>
                 </div>
             </div>

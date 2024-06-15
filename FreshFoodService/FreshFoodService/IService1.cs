@@ -40,10 +40,16 @@ namespace FreshFoodService
 
         [OperationContract]
         bool addItemonCart(int C_ID,int I_ID, int qty);
+
         [OperationContract]
         User GetUser(int id);
+
         [OperationContract]
         List<onCart> getOnCartItems(int userid);
+
+        [OperationContract]
+        bool removeItemOnCart(int userid, int itemid);
+
     }
 
 

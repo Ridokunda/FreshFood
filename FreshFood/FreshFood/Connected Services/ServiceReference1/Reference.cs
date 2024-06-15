@@ -534,6 +534,12 @@ namespace FreshFood.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOnCartItems", ReplyAction="http://tempuri.org/IService1/getOnCartItemsResponse")]
         System.Threading.Tasks.Task<FreshFood.ServiceReference1.onCart[]> getOnCartItemsAsync(int userid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeItemOnCart", ReplyAction="http://tempuri.org/IService1/removeItemOnCartResponse")]
+        bool removeItemOnCart(int userid, int itemid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeItemOnCart", ReplyAction="http://tempuri.org/IService1/removeItemOnCartResponse")]
+        System.Threading.Tasks.Task<bool> removeItemOnCartAsync(int userid, int itemid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -649,6 +655,14 @@ namespace FreshFood.ServiceReference1 {
         
         public System.Threading.Tasks.Task<FreshFood.ServiceReference1.onCart[]> getOnCartItemsAsync(int userid) {
             return base.Channel.getOnCartItemsAsync(userid);
+        }
+        
+        public bool removeItemOnCart(int userid, int itemid) {
+            return base.Channel.removeItemOnCart(userid, itemid);
+        }
+        
+        public System.Threading.Tasks.Task<bool> removeItemOnCartAsync(int userid, int itemid) {
+            return base.Channel.removeItemOnCartAsync(userid, itemid);
         }
     }
 }
