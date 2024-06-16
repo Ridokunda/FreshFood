@@ -176,6 +176,22 @@ namespace FreshFoodService
                        select c).FirstOrDefault();
             if (item != null && cus != null)
             {
+                var onItem = (from i in db.onCarts
+                              where i.CustomerID == C_ID && i.Item_ID == I_ID
+                              select i).FirstOrDefault();
+                if(onItem!= null)
+                {
+                    onItem.OnCart_qty++;
+                    try
+                    {
+                        db.SubmitChanges();
+                        return true;
+                    }catch(Exception ex)
+                    {
+                        ex.GetBaseException();
+                        return false;
+                    }
+                }
                 var add = new onCart
                 {
                     CustomerID = cus.Id,

@@ -38,6 +38,7 @@ namespace FreshFood
 
                 cartPanel.Controls.Add(cartHtml1);
 
+                
                 LinkButton removeLink = new LinkButton();
                 removeLink.CssClass = "fas fa-times";
                 removeLink.CommandArgument = item.Item_ID.ToString();
@@ -65,6 +66,7 @@ namespace FreshFood
             int itemid = int.Parse(button.CommandArgument);
 
             sc.removeItemOnCart(userid, itemid);
+            Response.Redirect(Request.RawUrl);
         }
 
         protected void Update_Cart_Click(object sender, EventArgs e)
