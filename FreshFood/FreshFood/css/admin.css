@@ -1,0 +1,43 @@
+body{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.container{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+}
+
+.sidebar{
+    background-color: #b0b435;
+    width: 20%;
+    height: 100vh;
+    padding: 5px;
+}
+
+.sidebar .Logo h3{
+    text-align: center;
+}
+
+.sidebar ul li a {
+    color: Black;
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+    padding: 5px;
+    margin: 0px;
+    gap: 5px;
+}
+.sidebar li{
+    
+    background-color: aliceblue;
+    text-align: center;
+    text-decoration: none;
+    border: solid 1px gray;
+    height:40px;
+    
+}
