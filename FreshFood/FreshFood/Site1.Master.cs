@@ -11,7 +11,14 @@ namespace FreshFood
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["CustomerID"] != null)
+            {
+                login.InnerHtml = "Logout";
+                
+               
+                login.HRef = "index.aspx";
+                
+            }
         }
     }
 }
