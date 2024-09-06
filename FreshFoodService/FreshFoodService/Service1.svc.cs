@@ -29,7 +29,7 @@ namespace FreshFoodService
             {
                 name = name,
                 surname = surname,
-                email = surname,
+                email = email,
                 password = hashedPassword,
                 usertype = 1
             };
