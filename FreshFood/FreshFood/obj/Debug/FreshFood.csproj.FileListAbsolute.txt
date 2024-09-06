@@ -111,8 +111,8 @@ C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\bin\roslyn\VBCSCompiler.e
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.csproj.AssemblyReference.cache
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.csproj.CoreCompileInputs.cache
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.csproj.CopyComplete
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.dll
 C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.pdb
+C:\Users\ridok\Git_Repos\FreshFood\FreshFood\FreshFood\obj\Debug\FreshFood.csproj.AssemblyReference.cache

@@ -15,53 +15,68 @@ namespace FreshFoodService
     {
         DataClasses1DataContext db = new DataClasses1DataContext();
 
-        public bool register(User user)
+        public object register(String name, String surname, String email, String password)
         {
+
+            byte[] salt = PasswordHelper.GenerateSalt();
+            string hashedPassword = PasswordHelper.HashPassword(password, salt);
+
             var usera = (from u in db.Users
-                         where u.Id.Equals(user.Id)
+                         where u.email.Equals(email)
                          select u).FirstOrDefault();
 
-            if(usera == null)
+            var nuser = new User()
             {
-                db.Users.InsertOnSubmit(user);
+                name = name,
+                surname = surname,
+                email = surname,
+                password = hashedPassword,
+                usertype = 1
+            };
+
+            if (usera == null)
+            {
+                db.Users.InsertOnSubmit(nuser);
                 try
                 {
                     db.SubmitChanges();
-                    return true;
+                    return "Successfully registered";
                 }catch(Exception ex)
                 {
                     ex.GetBaseException();
-                    return false;
+                    return "Registration failed";
                 }
             }
             else
             {
-                return false;
+                return "Email already registered";
             }
                         
         }
 
         public User Login(string email, string password)
         {
-            var loguser = (from u in db.Users
-                           where u.email.Equals(email) && u.password.Equals(password)
-                           select u).FirstOrDefault();
-            if(loguser != null)
+            var loguser = db.Users.FirstOrDefault(u => u.email.Equals(email));
+
+            if (loguser == null)
             {
-                var newuser = new User
+                // User does not exist
+                return null;
+            }
+
+            if (PasswordHelper.VerifyPassword(password, loguser.password))
+            {
+                // Password matches, return the user without exposing the password
+                return new User
                 {
                     Id = loguser.Id,
                     email = loguser.email,
-                    password = loguser.password,
-
+                    // Don't return password
                 };
-                return newuser;
             }
-            else
-            {
-                return null;
-            }
-            
+
+            // Password does not match
+            return null;
         }
 
         public User GetUser(int id)

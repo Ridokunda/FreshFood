@@ -5,29 +5,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <link href="css/admin.css" rel="stylesheet" />
+    <link href="/css/custom.css" rel="stylesheet" />
 </head>
 <body>
-    <form runat="server">
-        <div class="container">
-        <div class="sidebar">
-            <div class="Logo">
-                <h3>FreshFood</h3>
-            </div>
-            <ul>
-                <li><asp:LinkButton Text="Manage Products" runat="server" /></li>
-                <li><asp:LinkButton Text="Manage Orders" runat="server" /></li>
-                <li><asp:LinkButton Text="Manage Users" runat="server" /></li>
-                <li><asp:LinkButton Text="" runat="server" /></li>
-                <li><asp:LinkButton Text="Add Item" runat="server" /></li>
-                <li><asp:LinkButton Text="Add Item" runat="server" /></li>
-            </ul>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>FreshFood</h2>
         </div>
-        <div class="content">
-
+        <ul class="sidebar-menu">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#" class="active">Orders</a></li>
+            <li><a href="#">Inventory</a></li>
+            <li><a href="#">Payments</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Notifications</a></li>
+            <li><a href="#">Help & Support</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>Olivia Williams</p>
         </div>
     </div>
-    </form>
     
 </body>
 </html>

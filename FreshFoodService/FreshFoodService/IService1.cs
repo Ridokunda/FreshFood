@@ -21,7 +21,7 @@ namespace FreshFoodService
 
         // TODO: Add your service operations here
         [OperationContract]
-        bool register(User user);
+        object register(String name, String surname, String email, String password);
 
         [OperationContract]
         User Login(string email, string password);

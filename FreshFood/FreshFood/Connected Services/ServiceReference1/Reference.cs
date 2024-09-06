@@ -98,6 +98,12 @@ namespace FreshFood.ServiceReference1 {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string passwordField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string surnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int usertypeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -169,6 +175,32 @@ namespace FreshFood.ServiceReference1 {
                 if ((object.ReferenceEquals(this.passwordField, value) != true)) {
                     this.passwordField = value;
                     this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string surname {
+            get {
+                return this.surnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.surnameField, value) != true)) {
+                    this.surnameField = value;
+                    this.RaisePropertyChanged("surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int usertype {
+            get {
+                return this.usertypeField;
+            }
+            set {
+                if ((this.usertypeField.Equals(value) != true)) {
+                    this.usertypeField = value;
+                    this.RaisePropertyChanged("usertype");
                 }
             }
         }
@@ -482,10 +514,16 @@ namespace FreshFood.ServiceReference1 {
         System.Threading.Tasks.Task<FreshFood.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(FreshFood.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
-        bool register(FreshFood.ServiceReference1.User user);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.User))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.onCart[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.onCart))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.Item))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.Item[]))]
+        object register(string name, string surname, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
-        System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user);
+        System.Threading.Tasks.Task<object> registerAsync(string name, string surname, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
         FreshFood.ServiceReference1.User Login(string email, string password);
@@ -585,12 +623,12 @@ namespace FreshFood.ServiceReference1 {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public bool register(FreshFood.ServiceReference1.User user) {
-            return base.Channel.register(user);
+        public object register(string name, string surname, string email, string password) {
+            return base.Channel.register(name, surname, email, password);
         }
         
-        public System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user) {
-            return base.Channel.registerAsync(user);
+        public System.Threading.Tasks.Task<object> registerAsync(string name, string surname, string email, string password) {
+            return base.Channel.registerAsync(name, surname, email, password);
         }
         
         public FreshFood.ServiceReference1.User Login(string email, string password) {

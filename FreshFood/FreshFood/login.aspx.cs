@@ -26,7 +26,7 @@ namespace FreshFood
             }
             else
             {
-                Response.Redirect("login.aspx");
+                msg.InnerText = "Wrong password or Email!";
             }
         }
     }

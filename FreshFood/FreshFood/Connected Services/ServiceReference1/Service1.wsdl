@@ -34,14 +34,17 @@
       <xs:element name="register">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="user" nillable="true" type="q3:User" />
+            <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="registerResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="registerResult" type="xs:boolean" />
+            <xs:element minOccurs="0" name="registerResult" nillable="true" type="xs:anyType" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -56,7 +59,7 @@
       <xs:element name="LoginResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="LoginResult" nillable="true" type="q4:User" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="LoginResult" nillable="true" type="q3:User" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -68,14 +71,14 @@
       <xs:element name="getItemsResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemsResult" nillable="true" type="q5:ArrayOfItem" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemsResult" nillable="true" type="q4:ArrayOfItem" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="addItem">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q6:Item" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q5:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -96,14 +99,14 @@
       <xs:element name="getItemResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemResult" nillable="true" type="q7:Item" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getItemResult" nillable="true" type="q6:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="getItemId">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q8:Item" />
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="item" nillable="true" type="q7:Item" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -140,7 +143,7 @@
       <xs:element name="GetUserResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="GetUserResult" nillable="true" type="q9:User" />
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="GetUserResult" nillable="true" type="q8:User" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -154,7 +157,7 @@
       <xs:element name="getOnCartItemsResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getOnCartItemsResult" nillable="true" type="q10:ArrayOfonCart" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/FreshFoodService" minOccurs="0" name="getOnCartItemsResult" nillable="true" type="q9:ArrayOfonCart" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -230,6 +233,8 @@
           <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="onCarts" nillable="true" type="tns:ArrayOfonCart" />
           <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="surname" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="usertype" type="xs:int" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="User" nillable="true" type="tns:User" />
