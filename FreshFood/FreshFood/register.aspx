@@ -39,5 +39,6 @@
       <input type="password" id="Fpassword" placeholder="Enter Password" runat="server">
       <input type="password" id="Cpassword" placeholder="Confirm Password" runat="server">
       <asp:Button Text="Register" id="btnSubmit" runat="server" OnClick="btnSubmit_Click" />
+        <div id="msg" runat="server"></div>
   </div>
 </asp:Content>

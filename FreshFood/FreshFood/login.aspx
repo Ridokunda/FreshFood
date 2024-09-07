@@ -36,5 +36,6 @@
       <input type="password" id="password" placeholder="Enter Password" runat="server">
       
       <asp:Button Text="Log in" id="btnLogin" runat="server" OnClick="btnLogin_Click"  />
+        <div id ="msg" runat="server" style="color: red;"></div>
   </div>
 </asp:Content>

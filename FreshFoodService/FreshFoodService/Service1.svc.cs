@@ -15,55 +15,91 @@ namespace FreshFoodService
     {
         DataClasses1DataContext db = new DataClasses1DataContext();
 
-        public bool register(User user)
+        public object register(String name, String surname, String email, String password)
         {
+
+            byte[] salt = PasswordHelper.GenerateSalt();
+            string hashedPassword = PasswordHelper.HashPassword(password, salt);
+
             var usera = (from u in db.Users
-                         where u.Id.Equals(user.Id)
+                         where u.email.Equals(email)
                          select u).FirstOrDefault();
 
-            if(usera == null)
+            var nuser = new User()
             {
-                db.Users.InsertOnSubmit(user);
+                name = name,
+                surname = surname,
+                email = email,
+                password = hashedPassword,
+                usertype = 1
+            };
+
+            if (usera == null)
+            {
+                db.Users.InsertOnSubmit(nuser);
                 try
                 {
                     db.SubmitChanges();
-                    return true;
+                    return "Successfully registered";
                 }catch(Exception ex)
                 {
                     ex.GetBaseException();
-                    return false;
+                    return "Registration failed";
                 }
             }
             else
             {
-                return false;
+                return "Email already registered";
             }
                         
         }
 
         public User Login(string email, string password)
         {
-            var loguser = (from u in db.Users
-                           where u.email.Equals(email) && u.password.Equals(password)
-                           select u).FirstOrDefault();
-            if(loguser != null)
+            var loguser = db.Users.FirstOrDefault(u => u.email.Equals(email));
+
+            if (loguser == null)
             {
-                var newuser = new User
+                // User does not exist
+                return null;
+            }
+
+            if (PasswordHelper.VerifyPassword(password, loguser.password))
+            {
+                // Password matches, return the user without exposing the password
+                return new User
                 {
                     Id = loguser.Id,
                     email = loguser.email,
-                    password = loguser.password,
-
+                    // Don't return password
                 };
-                return newuser;
             }
-            else
-            {
-                return null;
-            }
-            
+
+            // Password does not match
+            return null;
         }
 
+        public User GetUser(int id)
+        {
+            var user = (from u in db.Users
+                        where u.Id.Equals(id)
+                        select u).FirstOrDefault();
+
+            if (user != null)
+            {
+                var reuser = new User()
+                {
+                    Id = user.Id,
+                    name = user.name,
+                    email = user.email,
+                    password = user.password,
+                    onCarts = user.onCarts
+                };
+                return reuser;
+
+            }
+            return null;
+        }
 
         public List<Item> getItems()
         {
@@ -127,7 +163,9 @@ namespace FreshFoodService
                     Item_name = item.Item_name,
                     Item_price = item.Item_price,
                     Item_Cat = item.Item_Cat,
-                    item_qty = item.item_qty
+                    item_qty = item.item_qty,
+                    Item_img = item.Item_img,
+                    
                 };
                 return return_item;
             }
@@ -141,6 +179,98 @@ namespace FreshFoodService
         public int getItemId(Item item)
         {
             return item.Item_ID;
+        }
+
+        public bool addItemonCart(int C_ID, int I_ID,int qty)
+        {
+            var item = (from i in db.Items
+                        where i.Item_ID.Equals(I_ID)
+                        select i).FirstOrDefault();
+            var cus = (from c in db.Users
+                       where c.Id.Equals(C_ID)
+                       select c).FirstOrDefault();
+            if (item != null && cus != null)
+            {
+                var onItem = (from i in db.onCarts
+                              where i.CustomerID == C_ID && i.Item_ID == I_ID
+                              select i).FirstOrDefault();
+                if(onItem!= null)
+                {
+                    onItem.OnCart_qty++;
+                    try
+                    {
+                        db.SubmitChanges();
+                        return true;
+                    }catch(Exception ex)
+                    {
+                        ex.GetBaseException();
+                        return false;
+                    }
+                }
+                var add = new onCart
+                {
+                    CustomerID = cus.Id,
+                    Item_ID = item.Item_ID,
+                    OnCart_qty = qty
+                };
+                db.onCarts.InsertOnSubmit(add);
+                try
+                {
+                    db.SubmitChanges();
+                    return true;
+                }catch(Exception ex)
+                {
+                    ex.GetBaseException();
+                    return false;
+                }
+            }
+            return false;
+        }
+        //Function to get items on cart of the user provided
+        public List<onCart> getOnCartItems(int userid)
+        {
+            dynamic onCart = (from i in db.onCarts
+                             where i.CustomerID.Equals(userid)
+                             select i);
+
+            List<onCart> list = new List<onCart>();
+
+            if (onCart != null)
+            {
+                foreach(onCart itm in onCart)
+                {
+                    var onCartnew = new onCart
+                    {
+                        Item_ID = itm.Item_ID,
+                        CustomerID = itm.CustomerID,
+                        OnCart_qty = itm.OnCart_qty,
+                    };
+                    list.Add(onCartnew);
+                }
+                
+            }
+            return list;
+        }
+
+        public bool removeItemOnCart(int userid, int itemid)
+        {
+            var item = (from i in db.onCarts
+                        where i.CustomerID == userid && i.Item_ID == itemid
+                        select i).FirstOrDefault();
+            if (item != null)
+            {
+                db.onCarts.DeleteOnSubmit(item);
+                try
+                {
+                    db.SubmitChanges();
+                    return true;
+                }catch(Exception ex)
+                {
+                    ex.GetBaseException();
+                    return false;
+                }
+            }
+            return false;
         }
 
         public string GetData(int value)

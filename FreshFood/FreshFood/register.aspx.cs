@@ -17,22 +17,10 @@ namespace FreshFood
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            var nuser = new User()
-            {
-         
-                name = CName.Value,
-                email = Cemail.Value,
-                password = Cpassword.Value
-            };
-            bool reg = sc.register(nuser);
-            if (reg)
-            {
-                Response.Redirect("index.aspx");
-            }
-            else
-            {
-                Response.Redirect("shop.aspx");
-            }
+            
+            object reg = sc.register(CName.Value,CSurname.Value, Cemail.Value,Cpassword.Value);
+            
+            msg.InnerText = reg.ToString();
         }
     }
 }

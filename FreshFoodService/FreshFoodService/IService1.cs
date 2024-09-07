@@ -21,7 +21,7 @@ namespace FreshFoodService
 
         // TODO: Add your service operations here
         [OperationContract]
-        bool register(User user);
+        object register(String name, String surname, String email, String password);
 
         [OperationContract]
         User Login(string email, string password);
@@ -37,12 +37,25 @@ namespace FreshFoodService
 
         [OperationContract]
         int getItemId(Item item);
+
+        [OperationContract]
+        bool addItemonCart(int C_ID,int I_ID, int qty);
+
+        [OperationContract]
+        User GetUser(int id);
+
+        [OperationContract]
+        List<onCart> getOnCartItems(int userid);
+
+        [OperationContract]
+        bool removeItemOnCart(int userid, int itemid);
+
     }
 
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class CompositeType 
     {
         bool boolValue = true;
         string stringValue = "Hello ";

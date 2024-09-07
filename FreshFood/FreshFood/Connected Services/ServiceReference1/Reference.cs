@@ -93,7 +93,16 @@ namespace FreshFood.ServiceReference1 {
         private string nameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FreshFood.ServiceReference1.onCart[] onCartsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string passwordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string surnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int usertypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -145,6 +154,19 @@ namespace FreshFood.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public FreshFood.ServiceReference1.onCart[] onCarts {
+            get {
+                return this.onCartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.onCartsField, value) != true)) {
+                    this.onCartsField = value;
+                    this.RaisePropertyChanged("onCarts");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string password {
             get {
                 return this.passwordField;
@@ -153,6 +175,157 @@ namespace FreshFood.ServiceReference1 {
                 if ((object.ReferenceEquals(this.passwordField, value) != true)) {
                     this.passwordField = value;
                     this.RaisePropertyChanged("password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string surname {
+            get {
+                return this.surnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.surnameField, value) != true)) {
+                    this.surnameField = value;
+                    this.RaisePropertyChanged("surname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int usertype {
+            get {
+                return this.usertypeField;
+            }
+            set {
+                if ((this.usertypeField.Equals(value) != true)) {
+                    this.usertypeField = value;
+                    this.RaisePropertyChanged("usertype");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="onCart", Namespace="http://schemas.datacontract.org/2004/07/FreshFoodService")]
+    [System.SerializableAttribute()]
+    public partial class onCart : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CustomerIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FreshFood.ServiceReference1.Item ItemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Item_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OnCart_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int OnCart_qtyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FreshFood.ServiceReference1.User UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CustomerID {
+            get {
+                return this.CustomerIDField;
+            }
+            set {
+                if ((this.CustomerIDField.Equals(value) != true)) {
+                    this.CustomerIDField = value;
+                    this.RaisePropertyChanged("CustomerID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FreshFood.ServiceReference1.Item Item {
+            get {
+                return this.ItemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ItemField, value) != true)) {
+                    this.ItemField = value;
+                    this.RaisePropertyChanged("Item");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Item_ID {
+            get {
+                return this.Item_IDField;
+            }
+            set {
+                if ((this.Item_IDField.Equals(value) != true)) {
+                    this.Item_IDField = value;
+                    this.RaisePropertyChanged("Item_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OnCart_ID {
+            get {
+                return this.OnCart_IDField;
+            }
+            set {
+                if ((this.OnCart_IDField.Equals(value) != true)) {
+                    this.OnCart_IDField = value;
+                    this.RaisePropertyChanged("OnCart_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int OnCart_qty {
+            get {
+                return this.OnCart_qtyField;
+            }
+            set {
+                if ((this.OnCart_qtyField.Equals(value) != true)) {
+                    this.OnCart_qtyField = value;
+                    this.RaisePropertyChanged("OnCart_qty");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FreshFood.ServiceReference1.User User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
                 }
             }
         }
@@ -196,6 +369,9 @@ namespace FreshFood.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int item_qtyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private FreshFood.ServiceReference1.onCart[] onCartsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -298,6 +474,19 @@ namespace FreshFood.ServiceReference1 {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public FreshFood.ServiceReference1.onCart[] onCarts {
+            get {
+                return this.onCartsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.onCartsField, value) != true)) {
+                    this.onCartsField = value;
+                    this.RaisePropertyChanged("onCarts");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -325,10 +514,16 @@ namespace FreshFood.ServiceReference1 {
         System.Threading.Tasks.Task<FreshFood.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(FreshFood.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
-        bool register(FreshFood.ServiceReference1.User user);
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.CompositeType))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.User))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.onCart[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.onCart))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.Item))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(FreshFood.ServiceReference1.Item[]))]
+        object register(string name, string surname, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/register", ReplyAction="http://tempuri.org/IService1/registerResponse")]
-        System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user);
+        System.Threading.Tasks.Task<object> registerAsync(string name, string surname, string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Login", ReplyAction="http://tempuri.org/IService1/LoginResponse")]
         FreshFood.ServiceReference1.User Login(string email, string password);
@@ -359,6 +554,30 @@ namespace FreshFood.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getItemId", ReplyAction="http://tempuri.org/IService1/getItemIdResponse")]
         System.Threading.Tasks.Task<int> getItemIdAsync(FreshFood.ServiceReference1.Item item);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addItemonCart", ReplyAction="http://tempuri.org/IService1/addItemonCartResponse")]
+        bool addItemonCart(int C_ID, int I_ID, int qty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/addItemonCart", ReplyAction="http://tempuri.org/IService1/addItemonCartResponse")]
+        System.Threading.Tasks.Task<bool> addItemonCartAsync(int C_ID, int I_ID, int qty);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUser", ReplyAction="http://tempuri.org/IService1/GetUserResponse")]
+        FreshFood.ServiceReference1.User GetUser(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetUser", ReplyAction="http://tempuri.org/IService1/GetUserResponse")]
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.User> GetUserAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOnCartItems", ReplyAction="http://tempuri.org/IService1/getOnCartItemsResponse")]
+        FreshFood.ServiceReference1.onCart[] getOnCartItems(int userid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/getOnCartItems", ReplyAction="http://tempuri.org/IService1/getOnCartItemsResponse")]
+        System.Threading.Tasks.Task<FreshFood.ServiceReference1.onCart[]> getOnCartItemsAsync(int userid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeItemOnCart", ReplyAction="http://tempuri.org/IService1/removeItemOnCartResponse")]
+        bool removeItemOnCart(int userid, int itemid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/removeItemOnCart", ReplyAction="http://tempuri.org/IService1/removeItemOnCartResponse")]
+        System.Threading.Tasks.Task<bool> removeItemOnCartAsync(int userid, int itemid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -404,12 +623,12 @@ namespace FreshFood.ServiceReference1 {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public bool register(FreshFood.ServiceReference1.User user) {
-            return base.Channel.register(user);
+        public object register(string name, string surname, string email, string password) {
+            return base.Channel.register(name, surname, email, password);
         }
         
-        public System.Threading.Tasks.Task<bool> registerAsync(FreshFood.ServiceReference1.User user) {
-            return base.Channel.registerAsync(user);
+        public System.Threading.Tasks.Task<object> registerAsync(string name, string surname, string email, string password) {
+            return base.Channel.registerAsync(name, surname, email, password);
         }
         
         public FreshFood.ServiceReference1.User Login(string email, string password) {
@@ -450,6 +669,38 @@ namespace FreshFood.ServiceReference1 {
         
         public System.Threading.Tasks.Task<int> getItemIdAsync(FreshFood.ServiceReference1.Item item) {
             return base.Channel.getItemIdAsync(item);
+        }
+        
+        public bool addItemonCart(int C_ID, int I_ID, int qty) {
+            return base.Channel.addItemonCart(C_ID, I_ID, qty);
+        }
+        
+        public System.Threading.Tasks.Task<bool> addItemonCartAsync(int C_ID, int I_ID, int qty) {
+            return base.Channel.addItemonCartAsync(C_ID, I_ID, qty);
+        }
+        
+        public FreshFood.ServiceReference1.User GetUser(int id) {
+            return base.Channel.GetUser(id);
+        }
+        
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.User> GetUserAsync(int id) {
+            return base.Channel.GetUserAsync(id);
+        }
+        
+        public FreshFood.ServiceReference1.onCart[] getOnCartItems(int userid) {
+            return base.Channel.getOnCartItems(userid);
+        }
+        
+        public System.Threading.Tasks.Task<FreshFood.ServiceReference1.onCart[]> getOnCartItemsAsync(int userid) {
+            return base.Channel.getOnCartItemsAsync(userid);
+        }
+        
+        public bool removeItemOnCart(int userid, int itemid) {
+            return base.Channel.removeItemOnCart(userid, itemid);
+        }
+        
+        public System.Threading.Tasks.Task<bool> removeItemOnCartAsync(int userid, int itemid) {
+            return base.Channel.removeItemOnCartAsync(userid, itemid);
         }
     }
 }
