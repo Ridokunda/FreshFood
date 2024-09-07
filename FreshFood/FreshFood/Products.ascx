@@ -24,17 +24,14 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Product name</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
                         <th>Product Quantity</th>
-                        <th>Product Status</th>
+                        <th>Product Price</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Carrots</td>
-                        <td>20</td>
-                        <td>Available</td>
-                    </tr>
+                <tbody id="itemsbody" runat="server">
+                    
                 </tbody>
             </table>
         </div>
