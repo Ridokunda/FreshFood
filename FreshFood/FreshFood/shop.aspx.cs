@@ -53,7 +53,7 @@ namespace FreshFood
             addToCartButton.CssClass = "cart";
             addToCartButton.CommandArgument = item.Item_ID.ToString();
             addToCartButton.Text = "Add to cart";
-            addToCartButton.Click += new EventHandler(AddToCart_Click);
+            //addToCartButton.Click += new EventHandler(AddToCart_Click);
 
             productPanel.Controls.Add(addToCartButton);
 
@@ -69,27 +69,9 @@ namespace FreshFood
             productPanel.Controls.Add(productHtmlEnd);
 
             // Add the panel to the display container
-            Display.Controls.Add(productPanel);
+            //Display.Controls.Add(productPanel);
         }
-        protected void AddToCart_Click(object sender, EventArgs e)
-        {
-            LinkButton button = (LinkButton)sender;
-            int productId = int.Parse(button.CommandArgument);
-
-            int? userid = Session["CustomerID"] as int?;
-            int UserID = (int)userid;
-            // Code to add the product to the cart
-            sc.addItemonCart(UserID, productId, 1);
-
-            // Optional: Redirect or provide feedback
-            Response.Redirect("index.aspx");
-        }
-
-        private void AddToCart(int productId, int UserID)
-        {
-            // Implement your logic to add the product to the cart
-            sc.addItemonCart(2, 2, 1);
-        }
+        
 
     }
 
