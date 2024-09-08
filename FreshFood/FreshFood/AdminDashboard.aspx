@@ -48,7 +48,13 @@
             </div>
 
             <div id="main-content">
-                <asp:PlaceHolder ID="DynamicContent" runat="server"></asp:PlaceHolder>
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UpdatePanelMainContent" runat="server">
+                    <ContentTemplate>
+                        <asp:PlaceHolder ID="DynamicContent" runat="server"></asp:PlaceHolder>
+                    </ContentTemplate>
+                   
+                </asp:UpdatePanel>
             </div>
         </div>
         

@@ -34,8 +34,9 @@ namespace FreshFood
         protected void LinkButtonInventory_Click(object sender, EventArgs e)
         {
             LoadUserControl("Products.ascx");
+           
         }
-
+       
         // Event handler for the Payments link
         protected void LinkButtonPayments_Click(object sender, EventArgs e)
         {
@@ -73,6 +74,7 @@ namespace FreshFood
             Control ctrl = LoadControl(controlPath);
             DynamicContent.Controls.Clear();
             DynamicContent.Controls.Add(ctrl);
+
         }
     }
 }

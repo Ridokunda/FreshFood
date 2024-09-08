@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,6 +40,29 @@ namespace FreshFood
          
             // Add the panel to the display container
             itemsbody.Controls.Add(productPanel);
+            
         }
+        
+
+        private void LoadAddProduct()
+        {
+            // Find the placeholder in the parent page (AdminDashboard)
+            PlaceHolder dynamicContent = (PlaceHolder)this.Page.FindControl("DynamicContent");
+
+            if (dynamicContent != null)
+            {
+                dynamicContent.Controls.Clear();
+                UserControl addProductControl = (UserControl)LoadControl("Products.ascx");
+                dynamicContent.Controls.Add(addProductControl);
+            }
+        }
+
+        protected void LinkButtonAddProduct_Click(object sender, EventArgs e)
+        {
+            Response.Write("Button clicked");
+            Debug.WriteLine("Add Product button clicked!");
+            LoadAddProduct();
+        }
+       
     }
 }

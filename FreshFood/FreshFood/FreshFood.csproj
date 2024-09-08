@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="about.aspx" />
     <Content Include="AddItem.aspx" />
+    <Content Include="AddProduct.ascx" />
     <Content Include="AdminDashboard.aspx" />
     <Content Include="cart.aspx" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
@@ -261,6 +262,13 @@
     </Compile>
     <Compile Include="AddItem.aspx.designer.cs">
       <DependentUpon>AddItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddProduct.ascx.cs">
+      <DependentUpon>AddProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.ascx.designer.cs">
+      <DependentUpon>AddProduct.ascx</DependentUpon>
     </Compile>
     <Compile Include="AdminDashboard.aspx.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
