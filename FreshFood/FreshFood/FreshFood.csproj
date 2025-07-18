@@ -113,6 +113,7 @@
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\style.css" />
     <Content Include="Dashboard.ascx" />
+    <Content Include="Default.aspx" />
     <Content Include="fonts\flaticon\backup.txt" />
     <Content Include="fonts\flaticon\font\flaticon.css" />
     <Content Include="fonts\flaticon\font\flaticon.html" />
@@ -241,6 +242,7 @@
     <Content Include="Orders.ascx" />
     <Content Include="php\form-process.php" />
     <Content Include="Products.ascx" />
+    <Content Include="logout.aspx" />
     <Content Include="register.aspx" />
     <Content Include="shop-detail.aspx" />
     <Content Include="shop.aspx" />
@@ -353,6 +355,10 @@
       <DependentUpon>Products.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -22,6 +22,7 @@ namespace FreshFood
             if (loguser != null)
             {
                 Session["CustomerID"] = loguser.Id;
+                Session["LoginSuccess"] = "You have successfully logged in!";
                 Response.Redirect("index.aspx");
             }
             else

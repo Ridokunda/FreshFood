@@ -12,64 +12,77 @@ namespace FreshFood
         Service1Client sc = new Service1Client();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            
-            dynamic list = sc.getItems();
-            foreach (Item item in list)
+            if (!IsPostBack)
             {
-                LoadItems(item);
+                BindProducts(null);
             }
-            
-            
-
         }
 
-        protected void LoadItems(Item item)
+        protected void Category_Click(object sender, EventArgs e)
         {
-            // Create a container for each product
-            Panel productPanel = new Panel();
-            productPanel.CssClass = "col-sm-6 col-md-6 col-lg-4 col-xl-4";
+            string category = null;
+            var btn = sender as LinkButton;
+            if (btn != null)
+            {
+                switch (btn.ID)
+                {
+                    case "btnVegetables": category = "Vegetables"; break;
+                    case "btnFruits": category = "Fruits"; break;
+                    case "btnJuice": category = "Juice"; break;
+                    case "btnDried": category = "Dried"; break;
+                    default: category = null; break;
+                }
+            }
+            BindProducts(category);
+        }
 
-            // Product content
-            Literal productHtmlStart = new Literal();
-            productHtmlStart.Text = $@"
-                <div class='products-single fix'>
-                    <div class='box-img-hover'>
-                        <div class='type-lb'>
-                            <p class='sale'>Sale</p>
+        private void BindProducts(string category)
+        {
+            phProducts.Controls.Clear();
+            var items = sc.getItems();
+            IEnumerable<Item> filtered = items;
+            if (!string.IsNullOrEmpty(category))
+            {
+                filtered = items.Where(i => i.Item_Cat != null && i.Item_Cat.Equals(category, StringComparison.OrdinalIgnoreCase));
+            }
+            foreach (Item item in filtered)
+            {
+                Panel productPanel = new Panel();
+                productPanel.CssClass = "col-md-6 col-lg-3 ftco-animate";
+                string saleSpan = item.Item_price < 100 ? "<span class='status'>Sale</span>" : "";
+                string priceHtml = item.Item_price < 100 ? $"<span class='mr-2 price-dc'>$120.00</span><span class='price-sale'>${item.Item_price:0.00}</span>" : $"<span>${item.Item_price:0.00}</span>";
+                Literal productHtml = new Literal();
+                productHtml.Text = $@"
+                    <div class='product'>
+                        <a href='shop-detail.aspx?ID={item.Item_ID}' class='img-prod'><img class='img-fluid' src='{item.Item_img}' alt='Product Image'>
+                            {saleSpan}
+                            <div class='overlay'></div>
+                        </a>
+                        <div class='text py-3 pb-4 px-3 text-center'>
+                            <h3><a href='shop-detail.aspx?ID={item.Item_ID}'>{item.Item_name}</a></h3>
+                            <div class='d-flex'>
+                                <div class='pricing'>
+                                    <p class='price'>{priceHtml}</p>
+                                </div>
+                            </div>
+                            <div class='bottom-area d-flex px-3'>
+                                <div class='m-auto d-flex'>
+                                    <a href='shop-detail.aspx?ID={item.Item_ID}' class='add-to-cart d-flex justify-content-center align-items-center text-center'>
+                                        <span><i class='ion-ios-menu'></i></span>
+                                    </a>
+                                    <a href='#' class='buy-now d-flex justify-content-center align-items-center mx-1'>
+                                        <span><i class='ion-ios-cart'></i></span>
+                                    </a>
+                                    <a href='#' class='heart d-flex justify-content-center align-items-center '>
+                                        <span><i class='ion-ios-heart'></i></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <img src='{item.Item_img}' class='img-fluid' alt='Image'>
-                        <div class='mask-icon'>
-                            <ul>
-                                <li><a href='shop-detail.aspx?ID={item.Item_ID}' data-toggle='tooltip' data-placement='right' title='View'><i class='fas fa-eye'></i></a></li>
-                                <li><a href='#' data-toggle='tooltip' data-placement='right' title='Compare'><i class='fas fa-sync-alt'></i></a></li>
-                                <li><a href='#' data-toggle='tooltip' data-placement='right' title='Add to Wishlist'><i class='far fa-heart'></i></a></li>
-                            </ul>";
-
-            productPanel.Controls.Add(productHtmlStart);
-
-            // Add the "Add to Cart" button
-            LinkButton addToCartButton = new LinkButton();
-            addToCartButton.CssClass = "cart";
-            addToCartButton.CommandArgument = item.Item_ID.ToString();
-            addToCartButton.Text = "Add to cart";
-            //addToCartButton.Click += new EventHandler(AddToCart_Click);
-
-            productPanel.Controls.Add(addToCartButton);
-
-            Literal productHtmlEnd = new Literal();
-            productHtmlEnd.Text = @"
-                        </div>
-                    </div>
-                    <div class='why-text'>
-                        <h4>" + item.Item_name + @"</h4>
-                        <h5>R" + item.Item_price + @"</h5>
-                    </div>
-                </div>";
-            productPanel.Controls.Add(productHtmlEnd);
-
-            // Add the panel to the display container
-            //Display.Controls.Add(productPanel);
+                    </div>";
+                productPanel.Controls.Add(productHtml);
+                phProducts.Controls.Add(productPanel);
+            }
         }
         
 

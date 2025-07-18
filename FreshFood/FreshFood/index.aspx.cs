@@ -11,7 +11,13 @@ namespace FreshFood
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["LoginSuccess"] != null)
+            {
+                lblLoginSuccess.Text = Session["LoginSuccess"].ToString();
+                lblLoginSuccess.Visible = true;
+                Session.Remove("LoginSuccess");
+                
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Label ID="lblLoginSuccess" runat="server" ForeColor="Green" Visible="false"></asp:Label>
     <section id="home-section" class="hero">
 		  <div class="home-slider owl-carousel">
 	      <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
